@@ -22,7 +22,11 @@ ngOnInit(): void {
 
   });
 
-  const sub = apples$.subscribe(Observer);
+  const sub = apples$.subscribe( {
+    next:item => console.log(`emitted item from next: ${item}`),
+    error:err => console.log(`emitted item from error: ${err}`),
+    complete:()=> console.log(`completed`),
+   });
   
 }
 
