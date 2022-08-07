@@ -1,5 +1,5 @@
 import { Component, OnInit, VERSION } from '@angular/core';
-import { from, Observable, observable, of } from 'rxjs';
+import { from, map, Observable, observable, of } from 'rxjs';
 
 @Component({
   selector: 'my-app',
@@ -8,16 +8,13 @@ import { from, Observable, observable, of } from 'rxjs';
 })
 export class AppComponent implements OnInit {
 ngOnInit(): void {
-  of('Private Applications','ModGL Wires').subscribe(
-    {
-    next:item=> console.log(item)
-    }
-  );
-  from(['Private Applications','ModGL Wires']).subscribe(
-    {
-    next:item=> console.log(`from observable ${item}`)
-    }
-  );
+ of(2,4,6).pipe(
+   map(item=> item *4)
+ ).subscribe(
+   item=>console.log(item)
+  
+   
+   )
 }
 
 }
